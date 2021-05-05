@@ -6,23 +6,19 @@ import marked from 'marked';
 import Head from 'next/head';
 import Link from 'next/link';
 
-const Post = ({ htmlString, data }) => {
-  return (
-    <>
-      <Head>
-        <title>{data.title}</title>
-      </Head>
-      <div
-        style={{ display: 'grid', placeItems: 'center', fontFamily: 'arial' }}
-      >
-        <div style={{ maxWidth: '50rem' }}>
-          <div dangerouslySetInnerHTML={{ __html: htmlString }} />
-        </div>
-        <Link href="/">Go back home</Link>
+const Post = ({ htmlString, data }) => (
+  <>
+    <Head>
+      <title>{data.title}</title>
+    </Head>
+    <div style={{ display: 'grid', placeItems: 'center', fontFamily: 'arial' }}>
+      <div style={{ maxWidth: '50rem' }}>
+        <div dangerouslySetInnerHTML={{ __html: htmlString }} />
       </div>
-    </>
-  );
-};
+      <Link href="/">Go back home</Link>
+    </div>
+  </>
+);
 
 export const getStaticPaths = async () => {
   const files = fs.readdirSync('posts');
@@ -31,9 +27,6 @@ export const getStaticPaths = async () => {
       slug: filename.replace('.md', ''),
     },
   }));
-
-  console.log('files: ', files);
-  console.log('paths: ', paths);
 
   return {
     paths,
