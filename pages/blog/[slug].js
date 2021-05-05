@@ -11,10 +11,27 @@ const Post = ({ htmlString, data }) => (
     <Head>
       <title>{data.title}</title>
     </Head>
-    <div style={{ display: 'grid', placeItems: 'center', fontFamily: 'arial' }}>
-      <div style={{ maxWidth: '50rem' }}>
-        <div dangerouslySetInnerHTML={{ __html: htmlString }} />
-      </div>
+    <div
+      style={{
+        display: 'grid',
+        placeItems: 'center',
+        fontFamily: 'arial',
+        background: '#f9f9f9',
+        minHeight: '100vh',
+      }}
+    >
+      <div
+        style={{
+          maxWidth: '50rem',
+          borderRadius: '5px',
+          boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)',
+          padding: '2.5rem 5rem',
+          background: 'white',
+          margin: '2rem 0',
+        }}
+        dangerouslySetInnerHTML={{ __html: htmlString }}
+      />
+
       <Link href="/">Go back home</Link>
     </div>
   </>
